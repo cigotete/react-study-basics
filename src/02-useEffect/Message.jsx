@@ -1,11 +1,12 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const Message = () => {
 
+  const [coords, setCoords] = useState({ x: 0, y: 0 })
+
   useEffect(() => {
     const onMouseMove = ({ x, y }) => {
-      const coords = { x, y };
-      console.log(coords);
+      setCoords({ x, y })
     }
 
     window.addEventListener('mousemove', onMouseMove)
@@ -17,6 +18,7 @@ export const Message = () => {
   return (
     <>
       <h3>User already exists</h3>
+        x: { coords.x } y: { coords.y }
       <hr />
     </>
   )
