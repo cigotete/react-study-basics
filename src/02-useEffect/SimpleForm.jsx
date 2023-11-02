@@ -18,17 +18,21 @@ export const SimpleForm = () => {
     });
   }
 
+  /*
   useEffect(() => {
     //console.log('hey! This is when component is mounted.');
   }, []);
+  
 
   useEffect(() => {
     //console.log('hey! This is when form changes.');
   }, [ formState ]);
 
+
   useEffect(() => {
     //console.log('hey! This is when email field changes.');
   }, [ email ]);
+  */
 
   return (
     <>
