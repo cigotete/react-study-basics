@@ -5,6 +5,7 @@ export const FormWithCustomHook = () => {
   const {
     formState,
     handleInputChange,
+    handleResetForm,
     username,
     email,
     password,
@@ -14,7 +15,6 @@ export const FormWithCustomHook = () => {
     password: '',
   });
 
-  //const { username, email, password } = formState;
 
   return (
     <>
@@ -46,6 +46,8 @@ export const FormWithCustomHook = () => {
         value={ password }
         onChange={ handleInputChange }
       />
+
+      <button onClick={ handleResetForm } className='btn btn-primary mt-2'>Borrar</button>
     </>
   )
 }
