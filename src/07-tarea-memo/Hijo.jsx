@@ -1,5 +1,7 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export const Hijo = ({ numero, incrementar }) => {
+export const Hijo = React.memo(({ numero, incrementar }) => {
 
     console.log('  Me volví a generar :(  ');
 
@@ -11,4 +13,10 @@ export const Hijo = ({ numero, incrementar }) => {
             { numero }
         </button>
     )
-}
+})
+
+Hijo.displayName = 'Hijo';
+Hijo.propTypes = {
+    numero: PropTypes.number.isRequired,
+    incrementar: PropTypes.func.isRequired,
+  };
