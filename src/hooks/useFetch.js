@@ -15,14 +15,24 @@ export const useFetch = ( url ) => {
       loading: true,
     });
 
-    const resp = await fetch( url );
-    const data = await resp.json();
+    try {
+      const resp = await fetch( url );
+      const data = await resp.json();
+      setState({
+        data: data,
+        loading: false,
+        error: null,
+      })
+    } catch (error) {
+      setState({
+        ...state,
+        loading: false,
+        error: 'No se pudo cargar la info',
+      })
+    }
+
     
-    setState({
-      data: data,
-      loading: false,
-      error: null,
-    })
+
   }
 
   useEffect(() => {
