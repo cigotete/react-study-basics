@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { useFetch } from '../hooks/useFetch';
+import { useCounter } from '../hooks/useCounter';
 
 export const MultipleCustomHooks = () => {
-
-  const { data, loading, error } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes`);
+  const { counter, increment } = useCounter(1);
+  const { data, loading } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes/${ counter }`);
   const { author, quote } = !!data && data[0];
   // !!data = data recives undefined, but ! gives false and !! gives true
 
@@ -29,6 +30,14 @@ export const MultipleCustomHooks = () => {
           </blockquote>
         )
       }
+
+      <button
+      onClick={() => {increment(1)}}
+      disabled={ loading }
+      className="btn btn-primary"
+      >
+        Next quote
+      </button>
     </>
   )
 }
