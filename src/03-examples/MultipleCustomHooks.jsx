@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFetch, useCounter } from '../hooks';
 
 export const MultipleCustomHooks = () => {
