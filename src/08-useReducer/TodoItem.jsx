@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const TodoItem = ({ todoItem }) => {
+export const TodoItem = ({ todoItem, onDeleteTodo }) => {
   return (
     <>
       <li className="list-group-item d-flex justify-content-between">
@@ -13,7 +13,10 @@ export const TodoItem = ({ todoItem }) => {
           { new Date(todoItem.id).getMinutes() }:
           { new Date(todoItem.id).getSeconds() }
           </span>
-        <button className="btn btn-danger">Borrar</button>
+        <button
+        className="btn btn-danger"
+        onClick={ () => onDeleteTodo ( todoItem.id ) }
+        >Borrar</button>
       </li>
     </>
   )
@@ -24,5 +27,6 @@ TodoItem.propTypes = {
     id: PropTypes.number.isRequired,
     desc: PropTypes.string.isRequired,
     done: PropTypes.bool.isRequired
-  }).isRequired
+  }).isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
 }
