@@ -3,20 +3,20 @@ import { useForm } from "../hooks/useForm"
 
 export const TodoAdd = ({ onNewTodo }) => {
 
-  const {description, handleInputChange, handleResetForm } = useForm(
+  const {desc, handleInputChange, handleResetForm } = useForm(
     {
-      description: ''
+      desc: ''
     }
   );
 
   const onFormSubmit = ( event ) => {
     event.preventDefault();
-    if ( description.length <= 1 ) return;
+    if ( desc.length <= 1 ) return;
 
     const newTodo = {
       id: new Date().getTime(),
       done: false,
-      description: description,
+      desc: desc,
     }
 
     onNewTodo(newTodo);
@@ -28,11 +28,11 @@ export const TodoAdd = ({ onNewTodo }) => {
       <form onSubmit={ onFormSubmit }>
         <input
             type="text"
-            name="description"
+            name="desc"
             className="form-control"
             placeholder="What todo?"
             autoComplete="off"
-            value= { description }
+            value= { desc }
             onChange={ handleInputChange }
         />
         <button
