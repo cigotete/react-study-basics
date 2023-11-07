@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types';
 
-export const TodoItem = ({ todoItem, onDeleteTodo }) => {
+export const TodoItem = ({ todoItem, onDeleteTodo, onToggleTodo }) => {
   return (
     <>
       <li className="list-group-item d-flex justify-content-between">
-        <span className="align-self-center">{ todoItem.desc }</span>
+      <span 
+          className={`align-self-center ${ (todoItem.done) ? 'text-decoration-line-through' : '' }`}
+          onClick={ () => onToggleTodo( todoItem.id ) }
+        >
+          { todoItem.desc }
+          </span>
         <span className="align-self-center">
           { new Date(todoItem.id).getFullYear() }/
           { new Date(todoItem.id).getMonth() }/
@@ -29,4 +34,5 @@ TodoItem.propTypes = {
     done: PropTypes.bool.isRequired
   }).isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
+  onToggleTodo: PropTypes.func.isRequired,
 }
