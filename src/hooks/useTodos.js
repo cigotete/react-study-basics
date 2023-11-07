@@ -40,13 +40,16 @@ export const useTodos = () => {
     dispatchTodo( action );
   }
 
+  const todosCount = todos.length;
+  const pendingTodosCount = todos.filter(todo=> !todo.done).length;
+
     return {
         todos,
         handleNewTodo,
         handleDeleteTodo,
         handleToggleTodo,
-        todosCount: todos.length,
-        pendingTodosCount: todos.filter(todo=> !todo.done).length,
+        todosCount,
+        pendingTodosCount,
     }
 
 }
